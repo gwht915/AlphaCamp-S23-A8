@@ -15,7 +15,8 @@
  
 
      - 按餐廰名稱、類別搜尋特定的餐廰
-      ![image]()
+     
+      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/S2-3-A1-3.jpg)
  
 
 **3.	Features - 功能 :** 
