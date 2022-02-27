@@ -4,15 +4,15 @@
 
 **2.	專案畫面**
 
-      主畫面
+     - 主畫面
       
       ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/S2-3-A1-1.jpg)
  
 
-      餐廰詳細資訊
+     - 餐廰詳細資訊
  
 
-      按餐廰名稱、類別搜尋特定的餐廰
+     - 按餐廰名稱、類別搜尋特定的餐廰
  
 
 **3.	Features - 功能 :** 
