@@ -35,11 +35,11 @@
 
      - 打開terminal, Clone此專案至本機
    
-         git clone https://github.com/gwht915/AlphaCamp-S23-A1.git
+         $git clone https://github.com/gwht915/AlphaCamp-S23-A1.git
    
      - 進入存放此專案的資料夾
    
-         cd restaurant_list
+         $cd restaurant_list
    
      - 安裝套件
    
