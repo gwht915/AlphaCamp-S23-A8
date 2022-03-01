@@ -6,13 +6,13 @@
 ## 專案畫面
 
    - 主畫面
-      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/S2-3-A1-1.jpg)
+      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/images/S2-3-A1-1.jpg)
 
    - 餐廰詳細資訊
-      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/S2-3-A1-2.jpg)
+      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/images/S2-3-A1-2.jpg)
 
    - 按餐廰名稱、類別搜尋特定的餐廰
-      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/S2-3-A1-3.jpg)
+      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/images/S2-3-A1-3.jpg)
 
 ## Features - 功能
 
