@@ -1,25 +1,21 @@
 
 # 專案
 
-   - 學期2-3-A1 打做餐廳清單
+   - 學期2-3-A7 餐廳清單擴充CRUD功能
     
 ## 專案畫面
 
    - 主畫面
-      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/images/S2-3-A1-1.jpg)
+      ![image](https://github.com/gwht915/AlphaCamp-S23-A7/blob/main/images/S2-3-A7-1.jpg)
 
-   - 餐廰詳細資訊
-      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/images/S2-3-A1-2.jpg)
-
-   - 按餐廰名稱、類別搜尋特定的餐廰
-      ![image](https://github.com/gwht915/AlphaCamp-S23-A1/blob/main/images/S2-3-A1-3.jpg)
-
+   
 ## Features - 功能
 
-   - 列出不同類別餐廰名單
-
-   - 點選指定餐廳顯示餐廳詳細資料
-
+   - 使用者可以新增一家餐廳
+   - 使用者可以瀏覽一家餐廳的詳細資訊
+   - 使用者可以瀏覽全部所有餐廳
+   - 使用者可以修改一家餐廳的資訊
+   - 使用者可以刪除一家餐廳
    - 可按餐廳名稱、類別搜尋特定餐廳
 
 ## Environment Setup – 環境建置
@@ -38,6 +34,16 @@
 
    - 安裝套件
       $npm install -g nodemon
+
+   - 安裝Mongoose
+      $ npm install mongoose@5.9.7
+      設定連線
+
+   - 在Robo 3T 新增資料庫 restaurant-list
+
+   - 根據restaurant.json在數據庫中建立種子資料
+      $ node models/seeds/restSeeder.js
+      
 
    - 啟動伺服器，執行app.js專案
 
