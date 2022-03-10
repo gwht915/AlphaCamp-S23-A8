@@ -50,21 +50,31 @@ app.get('/restaurants/:id', (req, res) => {
   console.log('id: ', id)
   return Restaurants.findById(id)
     .lean()
-    .then((rests) => res.render('show', { restaurant: rests}))
+    .then((rests) => res.render('show', { restaurant: rests }))
     .catch(error => console.log(error))
 })
 
 //按餐廳名稱或類別搜尋餐廳
 app.get('/search', (req, res) => {
-  //console.log('req.query', req.query)
+  
   const keyword = req.query.keyword
-  console.log(keyword)
-  return Restaurants.find()
+  if (!keyword) {
+    return res.redirect("/")
+  }
+  
+  return Restaurants.find({})
     .lean()
-    .then(rests => res.render('index', {restaurants: rests.filter(restaurant => {
-      return (restaurant.name.toLowerCase().includes(keyword.toLowerCase()) ||
-        restaurant.category.toLowerCase().includes(keyword.toLowerCase()) )
-    }), keyword: keyword }) )
+    // .then(rests => res.render('index', {restaurants: rests.filter(restaurant => {
+    //   return (restaurant.name.toLowerCase().includes(keyword.toLowerCase()) ||
+    //     restaurant.category.toLowerCase().includes(keyword.toLowerCase()) )
+    // }), keyword: keyword }) )
+    .then(rests => {
+      const filterData = rests.filter(restaurant => {
+        return (restaurant.name.toLowerCase().includes(keyword.toLowerCase()) ||
+          restaurant.category.toLowerCase().includes(keyword.toLowerCase()))
+      })
+      res.render('index', { restaurants: filterData, keyword: keyword })
+    })
     .catch(error => console.log(error))
 })
 
