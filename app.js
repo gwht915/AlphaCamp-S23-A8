@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars');
 // 引用 body-parser
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override') 
 
 const app = express()
 const port = 3000
@@ -21,6 +22,8 @@ app.use(express.static('public'))
 
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(methodOverride('_method'))
 
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
 
@@ -98,7 +101,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurants.findById(id)
     .then(rests => {
@@ -116,7 +119,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
 // })
 
 //刪除指定的餐廳
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurants.findById(id)
     .then(rests => rests.remove())
