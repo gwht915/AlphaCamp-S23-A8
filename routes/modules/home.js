@@ -5,10 +5,12 @@ const router = express.Router()
 const Restaurants = require('../../models/rest')
 
 // 定義首頁路由
+
 router.get('/', (req, res) => {
+  
   Restaurants.find()
     .lean()
-    .sort({ _id: 'asc' }) // desc
+    .sort({ name: 'asc' }) // desc
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
 })

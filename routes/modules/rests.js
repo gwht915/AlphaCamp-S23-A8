@@ -6,12 +6,13 @@ const Restaurants = require('../../models/rest')
 //   return res.render('new')
 // })
 
-router.get('/', (req, res) => {
-  Restaurants.find() // 取出 Todo model 裡的所有資料
-    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
-    .then(rests => res.render('index', { restaurants: rests })) // 將資料傳給 index 樣板
-    .catch(error => console.error(error)) // 錯誤處理
-})
+// router.get('/', (req, res) => {
+//   Restaurants.find() // 取出 Todo model 裡的所有資料
+//     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+//     .sort({name: 'asc' }) // desc
+//     .then(rests => res.render('index', { restaurants: rests })) // 將資料傳給 index 樣板
+//     .catch(error => console.error(error)) // 錯誤處理
+// })
 
 //顯示指定餐廳詳細資料
 router.get('/restaurants/:id', (req, res) => {
@@ -25,24 +26,46 @@ router.get('/restaurants/:id', (req, res) => {
 
 //按餐廳名稱或類別搜尋餐廳
 router.get('/search', (req, res) => {
-
+  
   const keyword = req.query.keyword
+  const sort = req.query.sort
+  
+  let sorting = {name: 'asc'}
+  
+
+  switch (sort) {
+    case 'A->Z':
+      sorting = { name: 'asc' }
+      break;
+    case 'Z->A':
+      sorting = { name: 'desc' }
+      break;
+    case '類別':
+      sorting = { category: 'asc' }
+      break;
+    case '地區':
+      sorting = { location: 'asc' }
+      break;
+  }
+  
   if (!keyword) {
-    return res.redirect("/")
+    //return res.redirect('/' )
+    return Restaurants.find()
+     .lean()
+     .sort(sorting) // desc
+     .then(restaurants => res.render('index', { restaurants }))
+     .catch(error => console.error(error))
   }
 
   return Restaurants.find({})
     .lean()
-    // .then(rests => res.render('index', {restaurants: rests.filter(restaurant => {
-    //   return (restaurant.name.toLowerCase().includes(keyword.toLowerCase()) ||
-    //     restaurant.category.toLowerCase().includes(keyword.toLowerCase()) )
-    // }), keyword: keyword }) )
+    .sort(sorting) // desc
     .then(rests => {
       const filterData = rests.filter(restaurant => {
         return (restaurant.name.toLowerCase().includes(keyword.toLowerCase()) ||
           restaurant.category.toLowerCase().includes(keyword.toLowerCase()))
       })
-      res.render('index', { restaurants: filterData, keyword: keyword })
+      res.render('index', { restaurants: filterData, keyword: keyword, sort: sort})
     })
     .catch(error => console.log(error))
 })
